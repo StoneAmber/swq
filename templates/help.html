@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends "pagebase.html" %}
+
+{% block title %}帮助说明{% endblock %}
+
+{% block navbar_content %}
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li><a href="/">主页</a>
+            <span class="sr-only"></span></li>
+    </ul>
+    <ul class="nav navbar-nav">
+        <li><a href="/history" target="_blank">历史</a>
+            <span class="sr-only"></span></li>
+    </ul>
+    <ul class="nav navbar-nav">
+        <li class="active"><a href="#">帮助</a>
+            <span class="sr-only">(current)</span></li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block page_content %}
+<dl class="row">
+  <dt class="col-sm-2 text-center"> 功能 </dt>
+  <dt class="col-sm-3 text-center"> 用法 </dt>
+</dl>
+<dl class="row">
+  <dd class="col-sm-2 text-center"> 查询最新天气 </dd>
+  <dd class="col-sm-3  text-center"> 主页里框内输入地点 再回车或点击查询 </dd>
+</dl>
+<dl class="row">
+  <dd class="col-sm-2  text-center"> 阅读帮助说明 </dd>
+  <dd class="col-sm-3  text-center"> 请点击导航条“帮助” </dd>
+</dl>
+<dl class="row">
+  <dd class="col-sm-2  text-center"> 查看查询历史 </dd>
+  <dd class="col-sm-3  text-center"> 请点击导航条“历史” </dd>
+</dl>
+
+<li><strong>地点名参考</strong>
+   <ul>
+       <li>城市中文名 例 北京</li>
+       <li>省市名称组合 例 辽宁朝阳 北京朝阳</li>
+       <li>城市拼音或英文名 例 beijing</li>
+       <li>拼音相同城市 输入省份拼音后空格加城市拼音 例 shanxi yulin</li>
+   </ul>
+</li>
+{% endblock %}

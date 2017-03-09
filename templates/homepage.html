@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% extends "pagebase.html" %}
+
+{% block title %}简易天气查询{% endblock %}
+
+{% block navbar_content %}
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li class="active"><a href="#">主页</a>
+            <span class="sr-only">(current)</span></li>
+    </ul>
+    <ul class="nav navbar-nav">
+        <li><a href="/history" target="_blank">历史</a>
+            <span class="sr-only">(current)</span></li>
+    </ul>
+    <ul class="nav navbar-nav">
+        <li><a href="/help" target="_blank">帮助</a>
+            <span class="sr-only">(current)</span></li>
+    </ul>
+    <form class="navbar-form navbar-left" action="/" role='form' method="POST">
+        <div class="form-group">
+            <input type="text" class="form-control" name=entry
+            placeholder="请输入地点">
+            <input type="submit" class="btn btn-default" name=query value=查询>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block page_content %}
+{% if welcome %}
+    <h3>欢迎使用简易天气查询 web v0.1 ！</h3>
+{% endif %}
+{% if weather_data %}
+    <p>
+        {{weather_data['location']}} &nbsp;&nbsp;
+        {{weather_data['condition']}} &nbsp;&nbsp;
+        {{weather_data['temperature']}}°C &nbsp;&nbsp;
+        数据更新于{{weather_data['updata_time']}}
+    </p>
+{% endif %}
+{% if error %}
+    {% if error == 3 %}
+        <p> 心知天气没有&nbsp;{{input_str}}&nbsp;天气数据 </p>
+        <p> 欲了解地点名参考值 请点击导航条“帮助” </p>
+    {% elif error == 4 %}
+        <p> 抱歉 获取&nbsp;{{input_str}}&nbsp;天气数据错误！ </p>
+        <p> 错误信息 <br>
+            Thinkpage Response status_code: {{error_message['status_code']}}<br>
+            Thinkpage Response status: {{error_message['status']}}
+        </p>
+    {% elif error == 9 %}
+        <p> 抱歉 获取&nbsp;{{input_str}}&nbsp;数据时间过长 请重试 </p>
+    {% endif %}
+{% endif %}
+{% endblock %}

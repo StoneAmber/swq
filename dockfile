@@ -1,0 +1,16 @@
+
+FROM daocloud.io/python:3.5
+MAINTAINER stonemask <stonemask@noreply.users.github.com>
+
+
+RUN mkdir -p /swq
+COPY . /swq
+WORKDIR /swq
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+
+CMD [""]
